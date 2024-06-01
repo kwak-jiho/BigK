@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .header {
+            width: 100%;
+            background-color: #3e6085;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+        .header .logo a {
+            color: white;
+            text-decoration: none;
+        }
+        #login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            text-align: center;
+            margin-top: 120px; /* 헤더 높이 고려 */
+        }
+        h2 {
+            margin-top: 0;
+        }
+        p {
+            font-size: 0.9em;
+            color: #888;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3e6085;
+            border: none;
+            color: white;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            color: #0056b3;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .checkbox-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .checkbox-container label {
+            margin: 0 10px 0 5px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo"><a href="login.html">Big K</a></h1>
+        </div>
+    </header>
+
+    <div id="login-container">
+        <h2>로그인</h2>
+        <p>로그인하시면 더 나은 서비스를 이용하실 수 있습니다.</p>
+        <form id="login-form">
+            <label for="email">아이디:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="options">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">아이디 저장</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="auto-login" name="auto-login">
+                    <label for="auto-login">자동 로그인</label>
+                </div>
+            </div>
+            <button type="submit">로그인</button>
+        </form>
+        <div class="links">
+            <a href="#">회원가입</a> |
+            <a href="#">아이디찾기</a> |
+            <a href="#">비밀번호찾기</a>
+        </div>
+    </div>
+</body>
+</html>
+

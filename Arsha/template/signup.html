@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .header {
+            width: 100%;
+            background-color: #3e6085;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+        .header .logo a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #signup-container {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            text-align: center;
+            margin-top: 120px; /* 헤더 높이 고려 */
+        }
+        h2 {
+            margin-top: 0;
+        }
+        p {
+            font-size: 0.9em;
+            color: #888;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3e6085;
+            border: none;
+            color: white;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3e6085;
+        }
+        .checkbox-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .checkbox-container label {
+            margin: 0 10px 0 5px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo"><a href="signup.html">Big K</a></h1>
+        </div>
+    </header>
+
+    <div id="signup-container">
+        <h2>회원가입</h2>
+        <form id="signup-form">
+            <label for="email">아이디(이메일):</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">패스워드:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">휴대폰번호:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label>알림 서비스 수신 여부</label>
+            <div class="radio-container">
+                <label for="newsletter-yes">
+                    <input type="radio" id="newsletter-yes" name="newsletter" value="yes"> 예
+                </label>
+                <label for="newsletter-no">
+                    <input type="radio" id="newsletter-no" name="newsletter" value="no"> 아니오
+                </label>
+            </div>
+            
+            <button type="submit">회원가입</button>
+        </form>
+    </div>
+</body>
+</html>
