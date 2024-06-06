@@ -14,7 +14,9 @@
   <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
@@ -28,33 +30,19 @@
   <!-- Template Main CSS File -->
   <link href="../static/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Arsha
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Updated: Mar 17 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+      <h1 class="logo me-auto"><a href="index.html">BIGK</a></h1>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="/home">메인 홈</a></li>
+          <li><a class="nav-link scrollto active" href="/home">메인 홈</a></li>
           <li><a class="nav-link scrollto" href="/about">소개</a></li>
-          <li><a class="nav-link scrollto" href="#services">서비스</a></li>
-          <li><a class="nav-link   scrollto" href="/login">로그인</a></li>
-          <li><a class="nav-link scrollto" href="/singup">회원가입</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto" href="/services">서비스</a></li>
+          <li class="dropdown"><a href="#"><span>R&D 사업</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -71,126 +59,145 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="nav-link scrollto" href="/login">로그인</a></li>
+          <li><a class="nav-link scrollto" href="/signup">회원가입</a></li>
+          <li><a class="getstarted scrollto" href="/alarm">알림 받기</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+      </nav>
     </div>
-  </header><!-- End Header -->
+  </header>
 
   <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Inner Page</li>
+          <li><a href="index.html">메인 홈</a></li>
+          <li>R&D 사업</li>
         </ol>
-        <h2>Inner Page</h2>
-
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-    <section class="inner-page">
-      <div class="container">
-        <p>
-          Example inner page template
-        </p>
+        <h2>사업 공고</h2>
       </div>
     </section>
 
-  </main><!-- End #main -->
+    <section class="inner-page">
 
-  <!-- ======= Footer ======= -->
+      <div class="container">
+        
+        <div class="search-container" style="margin-bottom: 60px;">
+          <input type="text" id="search-input" class="search-input" placeholder="사업 공고명을 입력하시거나, 사업 키워드를 입력하세요">
+          <button id="search-button" onclick="search()" class="search-button">검색</button>
+        </div>
+
+        <div class="status-container" >
+          <button id="status-all" class="status-button" onclick="toggleStatus(this)">전체</button>
+          <button id="status-upcoming" class="status-button" onclick="toggleStatus(this)">접수 예정</button>
+          <button id="status-ongoing" class="status-button" onclick="toggleStatus(this)">접수중</button>
+          <button id="status-closed" class="status-button" onclick="toggleStatus(this)">마감</button>
+        </div>
+
+        <div class="table-container" style="margin-top: 50px;">
+          <table>
+            <tr>
+              <h5>사업 분류</h5>
+              <th id="category-people" onclick="toggleCategory(this)">인력 양성 사업</th>
+              <th id="category-tech" onclick="toggleCategory(this)">기술 개발 사업</th>
+              <th id="category-planning" onclick="toggleCategory(this)">기획 사업</th>
+            </tr>
+          </table>
+        </div>
+
+
+        <div class="table-container">
+          <table>
+            <tr>
+              <h5>단계</h5>
+              <td id="category-1" onclick="toggleCategory(this)">원재료</td>
+              <td id="category-2" onclick="toggleCategory(this)">소재</td>
+              <td id="category-3" onclick="toggleCategory(this)">공정(제조)</td>
+              <td id="category-4" onclick="toggleCategory(this)">부품</td>
+            </tr>
+            <tr>
+              <td id="category-5" onclick="toggleCategory(this)">모듈</td>
+              <td id="category-6" onclick="toggleCategory(this)">SW</td>
+              <td id="category-7" onclick="toggleCategory(this)">최종제품</td>
+              <td id="category-8" onclick="toggleCategory(this)">융복합제품</td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div class="table-container">
+          <table>
+            <tr>
+              <h5>분야</h5>
+              <td id="category-a" onclick="toggleCategory(this)">우주</td>
+              <td id="category-b" onclick="toggleCategory(this)">항공</td>
+              <td id="category-c" onclick="toggleCategory(this)">국방</td>
+              <td id="category-d" onclick="toggleCategory(this)">의료</td>
+              <td id="category-e" onclick="toggleCategory(this)">자동차</td>
+              <td id="category-f" onclick="toggleCategory(this)">일반소비가전</td>
+              <td id="category-g" onclick="toggleCategory(this)">일반소비재</td>
+              <td id="category-h" onclick="toggleCategory(this)">기계</td>
+              <td id="category-i" onclick="toggleCategory(this)">화학</td>
+              <td id="category-j" onclick="toggleCategory(this)">바이오</td>
+            </tr>
+            <tr>
+              <td id="category-k" onclick="toggleCategory(this)">에너지</td>
+              <td id="category-l" onclick="toggleCategory(this)">환경</td>
+              <td id="category-m" onclick="toggleCategory(this)">IT</td>
+              <td id="category-n" onclick="toggleCategory(this)">통신</td>
+              <td id="category-o" onclick="toggleCategory(this)">서비스</td>
+              <td id="category-p" onclick="toggleCategory(this)">운송</td>
+              <td id="category-q" onclick="toggleCategory(this)">물류</td>
+              <td id="category-r" onclick="toggleCategory(this)">건설</td>
+              <td id="category-s" onclick="toggleCategory(this)">금융</td>
+              <td id="category-t" onclick="toggleCategory(this)">보험</td>
+            </tr>
+          </table>
+        </div>
+
+        
+      </div>
+    </section>
+
+    <div class="results-container">
+      <h2>검색결과</h2>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>공고 현황</th>
+            <th>부처명</th>
+            <th>공고명</th>
+            <th>접수일</th>
+            <th>마감일</th>
+          </tr>
+        </thead>
+        <tbody id="results-body">
+          <!-- 공고 데이터가 여기에 동적으로 추가됩니다 -->
+        </tbody>
+
+
+      </table>
+      <div class="pagination" id="pagination"></div>
+    </div>
+    </div>
+    </section>
+  </main>
+
   <footer id="footer">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Arsha</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
     <div class="container footer-bottom clearfix">
       <div class="copyright">
         &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../static/assets/vendor/aos/aos.js"></script>
@@ -200,9 +207,9 @@
   <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../static/assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="../static/assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
   <script src="../static/assets/js/main.js"></script>
+
+  
 
 </body>
 

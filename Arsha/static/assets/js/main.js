@@ -6,7 +6,7 @@
 * License: https://bootstrapmade.com/license/
 */
 
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -111,7 +111,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -120,7 +120,7 @@
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
+  on('click', '.navbar .dropdown > a', function (e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
       e.preventDefault()
       this.nextElementSibling.classList.toggle('dropdown-active')
@@ -130,7 +130,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -181,7 +181,7 @@
     new Waypoint({
       element: skilsContent,
       offset: '80%',
-      handler: function(direction) {
+      handler: function (direction) {
         let progress = select('.progress .progress-bar', true);
         progress.forEach((el) => {
           el.style.width = el.getAttribute('aria-valuenow') + '%'
@@ -202,9 +202,9 @@
 
       let portfolioFilters = select('#portfolio-flters li', true);
 
-      on('click', '#portfolio-flters li', function(e) {
+      on('click', '#portfolio-flters li', function (e) {
         e.preventDefault();
-        portfolioFilters.forEach(function(el) {
+        portfolioFilters.forEach(function (el) {
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
@@ -212,7 +212,7 @@
         portfolioIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-        portfolioIsotope.on('arrangeComplete', function() {
+        portfolioIsotope.on('arrangeComplete', function () {
           AOS.refresh()
         });
       }, true);
@@ -257,3 +257,154 @@
   });
 
 })()
+
+const data = [
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+
+  { status: '', department: '', title: '', startDate: '', endDate: '' },
+
+
+  // 추가 데이터는 필요에 따라 이곳에 추가
+];
+
+
+let currentPage = 1;
+const rowsPerPage = 15;
+
+function search() {
+  let query = document.getElementById('search-input').value;
+  alert('검색어: ' + query);
+  // 검색어를 백엔드로 전송
+  fetch('/search', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query: query }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+function toggleStatus(element) {
+  let buttons = document.getElementsByClassName('status-button');
+  for (let button of buttons) {
+    button.classList.remove('active');
+  }
+  element.classList.add('active');
+  // 클릭된 버튼의 ID를 백엔드로 전송
+  fetch('/status', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: element.id }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+function toggleCategory(element) {
+  element.classList.toggle('active');
+  // 클릭된 카테고리의 ID를 백엔드로 전송
+  fetch('/category', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: element.id }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+
+function displayList(items, wrapper, rowsPerPage, page) {
+  wrapper.innerHTML = "";
+  page--;
+
+  let start = rowsPerPage * page;
+  let end = start + rowsPerPage;
+  let paginatedItems = items.slice(start, end);
+
+  for (let i = 0; i < paginatedItems.length; i++) {
+    let item = paginatedItems[i];
+
+    let row = document.createElement('tr');
+    row.innerHTML = `
+                  <td>${item.status}</td>
+                  <td>${item.department}</td>
+                  <td>${item.title}</td>              
+                  <td>${item.startDate}</td>
+                  <td>${item.endDate}</td>
+              `;
+    wrapper.appendChild(row);
+  }
+}
+
+function setupPagination(items, wrapper, rowsPerPage) {
+  wrapper.innerHTML = "";
+
+  let pageCount = Math.ceil(items.length / rowsPerPage);
+  for (let i = 1; i < pageCount + 1; i++) {
+    let btn = paginationButton(i, items);
+    wrapper.appendChild(btn);
+  }
+}
+
+function paginationButton(page, items) {
+  let button = document.createElement('button');
+  button.innerText = page;
+
+  if (currentPage == page) button.classList.add('active');
+
+  button.addEventListener('click', function () {
+    currentPage = page;
+    displayList(items, document.getElementById('results-body'), rowsPerPage, currentPage);
+
+    let currentBtn = document.querySelector('.pagination button.active');
+    currentBtn.classList.remove('active');
+
+    button.classList.add('active');
+  });
+
+  return button;
+}
+
+displayList(data, document.getElementById('results-body'), rowsPerPage, currentPage);
+setupPagination(data, document.getElementById('pagination'), rowsPerPage);
