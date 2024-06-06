@@ -289,13 +289,13 @@ const data = [
 
 
 let currentPage = 1;
-const rowsPerPage = 15;
+const rowsPerPage = 10;
 
 function search() {
   let query = document.getElementById('search-input').value;
   alert('검색어: ' + query);
   // 검색어를 백엔드로 전송
-  fetch('/search', {
+  fetch('http://localhost:3000/search', { // URL 수정
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -318,7 +318,7 @@ function toggleStatus(element) {
   }
   element.classList.add('active');
   // 클릭된 버튼의 ID를 백엔드로 전송
-  fetch('/status', {
+  fetch('http://localhost:3000/status', { // URL 수정
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -336,13 +336,16 @@ function toggleStatus(element) {
 
 function toggleCategory(element) {
   element.classList.toggle('active');
-  // 클릭된 카테고리의 ID를 백엔드로 전송
-  fetch('/category', {
+
+  const categoryId = element.id;
+  console.log('Sending category ID:', categoryId);
+
+  fetch('http://localhost:3000/category', { // URL 수정
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ id: element.id }),
+    body: JSON.stringify({ id: categoryId }),
   })
     .then(response => response.json())
     .then(data => {
@@ -352,6 +355,10 @@ function toggleCategory(element) {
       console.error('Error:', error);
     });
 }
+
+
+
+
 
 
 function displayList(items, wrapper, rowsPerPage, page) {
